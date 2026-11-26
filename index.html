@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bo-Heng Yu - Backend Engineer Resume</title>
+  <style>
+    :root {
+      --olive: #536b25;
+      --olive-btn: #556b26;
+      --olive-btn-hover: #43561d;
+      --text-dark: #1e2530;
+      --text-body: #2c3545;
+      --text-muted: #5a6577;
+      --line-color: #9ba5b4;
+      --footer-line: #d8dee6;
+      --bg-outer: #f5f7f9;
+      --bg-paper: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-outer);
+      color: var(--text-body);
+      line-height: 1.5;
+      font-size: 13.5px;
+      padding: 20px 16px 40px 16px;
+    }
+
+    /* Top Right Print Button */
+    .top-bar {
+      max-width: 960px;
+      margin: 0 auto 14px auto;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .print-btn {
+      background-color: var(--olive-btn);
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+      transition: background-color 0.2s ease;
+    }
+
+    .print-btn:hover {
+      background-color: var(--olive-btn-hover);
+    }
+
+    /* Main Paper Card */
+    .paper {
+      max-width: 960px;
+      margin: 0 auto;
+      background-color: var(--bg-paper);
+      padding: 46px 52px 38px 52px;
+      border-radius: 4px;
+      box-shadow: 0 2px 14px rgba(15, 23, 42, 0.06);
+    }
+
+    /* Header Section */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+
+    .header-left {
+      flex: 1;
+    }
+
+    .keywords {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--olive);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .name {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .role-line {
+      font-size: 15.5px;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .tagline {
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 13.5px;
+      color: var(--text-body);
+      line-height: 1.72;
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .header-right a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .header-right a:hover {
+      color: var(--olive);
+      text-decoration: underline;
+    }
+
+    /* Summary Paragraph */
+    .summary {
+      font-size: 13.5px;
+      color: var(--text-body);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    /* Section Headings */
+    .section-heading {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--olive);
+      text-transform: uppercase;
+      border-bottom: 1.5px solid var(--line-color);
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+    }
+
+    /* Experience Items */
+    .experience-section {
+      margin-bottom: 24px;
+    }
+
+    .job-item {
+      margin-bottom: 18px;
+    }
+
+    .job-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 3px;
+    }
+
+    .job-company-role {
+      font-size: 14.5px;
+      color: var(--text-dark);
+    }
+
+    .job-company-role strong {
+      font-weight: 700;
+    }
+
+    .job-company-role .divider {
+      margin: 0 5px;
+      color: var(--text-muted);
+    }
+
+    .job-date-loc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .job-tech {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+      line-height: 1.48;
+    }
+
+    .job-bullets {
+      padding-left: 18px;
+      font-size: 13.5px;
+      color: var(--text-body);
+    }
+
+    .job-bullets li {
+      margin-bottom: 5px;
+      line-height: 1.55;
+    }
+
+    .job-bullets li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Bottom Two-Column Grid */
+    .bottom-columns {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 32px;
+      margin-bottom: 26px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      row-gap: 11px;
+      column-gap: 10px;
+      font-size: 13.5px;
+      align-items: baseline;
+    }
+
+    .skill-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--olive);
+      text-transform: uppercase;
+    }
+
+    .skill-items {
+      color: var(--text-body);
+      line-height: 1.48;
+    }
+
+    .edu-block {
+      margin-bottom: 14px;
+      font-size: 13.5px;
+      line-height: 1.52;
+    }
+
+    .edu-title {
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .edu-sub {
+      color: var(--text-muted);
+    }
+
+    .personal-block {
+      font-size: 13.5px;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    .personal-title {
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--footer-line);
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Print Styles */
+    @media print {
+      @page {
+        size: A4;
+        margin: 10mm 12mm;
+      }
+
+      body {
+        background-color: #ffffff;
+        padding: 0;
+        font-size: 11.5px;
+        line-height: 1.4;
+      }
+
+      .top-bar {
+        display: none !important;
+      }
+
+      .paper {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+      }
+
+      .header {
+        margin-bottom: 12px;
+      }
+
+      .keywords {
+        font-size: 10.5px;
+        margin-bottom: 4px;
+      }
+
+      .name {
+        font-size: 28px;
+        margin-bottom: 4px;
+      }
+
+      .role-line {
+        font-size: 13.5px;
+      }
+
+      .tagline, .header-right, .summary {
+        font-size: 11.5px;
+      }
+
+      .header-right {
+        line-height: 1.52;
+      }
+
+      .summary {
+        margin-bottom: 14px;
+      }
+
+      .section-heading {
+        font-size: 12px;
+        padding-bottom: 4px;
+        margin-bottom: 10px;
+      }
+
+      .experience-section {
+        margin-bottom: 14px;
+      }
+
+      .job-item {
+        margin-bottom: 11px;
+      }
+
+      .job-company-role {
+        font-size: 12.5px;
+      }
+
+      .job-date-loc, .job-tech {
+        font-size: 11px;
+      }
+
+      .job-bullets {
+        font-size: 11.5px;
+      }
+
+      .job-bullets li {
+        margin-bottom: 3px;
+        line-height: 1.42;
+      }
+
+      .bottom-columns {
+        gap: 24px;
+        margin-bottom: 14px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 88px 1fr;
+        row-gap: 7px;
+        font-size: 11.5px;
+      }
+
+      .skill-label {
+        font-size: 10.5px;
+      }
+
+      .edu-block {
+        margin-bottom: 9px;
+        font-size: 11.5px;
+        line-height: 1.4;
+      }
+
+      .personal-block {
+        font-size: 11.5px;
+        line-height: 1.45;
+      }
+
+      .footer {
+        padding-top: 8px;
+        font-size: 10.5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <div class="paper">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="keywords">BACKEND ENGINEER &nbsp; ASP.NET &nbsp; C# &nbsp; AI AGENT</div>
+        <h1 class="name">Bo-Heng Yu (Heng)</h1>
+        <div> </div>
+        <div class="tagline">Backend Engineer with over 5 years of experience in development and operations</div>
+      </div>
+      <div class="header-right">
+        <div>Taipei, Taiwan</div>
+        <div>Phone: <a href="tel:0911-861-725">0911-861-725</a></div>
+        <div>Email: <a href="mailto:s860722003@gmail.com">s860722003@gmail.com</a></div>
+        <div>Line: aro6950</div>
+        <div>GitHub: <a href="https://github.com/s860722003-sketch" target="_blank" rel="noopener noreferrer">https://github.com/s860722003-sketch</a></div>
+      </div>
+    </header>
+
+    <!-- Summary -->
+    <p class="summary">
+      Outgoing, optimistic, and logical thinker with strong structured communication skills. Values team synergy and believes a positive atmosphere fosters more effective collaboration and communication.
+    </p>
+
+    <!-- Work Experience -->
+    <section class="experience-section">
+      <h2 class="section-heading">WORK EXPERIENCE</h2>
+
+      <div class="job-item">
+        <div class="job-top">
+          <div class="job-company-role"><strong>Gem Fortune Group, Chlitina</strong><span class="divider">|</span>Operations Engineer</div>
+          <div class="job-date-loc">Sep 2024 - Now | Taipei, Taiwan</div>
+        </div>
+        <div class="job-tech">Tech &amp; Databases: Python, JavaScript, HTML, jQuery, Linux, SAP, draw.io / SQL Server, Oracle, MySQL</div>
+        <ul class="job-bullets">
+          <li>Managed daily operations, maintenance, and production debugging for the official website, e-commerce mall, and back-office systems; developed cross-departmental operational analytics reports (saving 8–16 hours/month per report) and led IT onboarding training and SOP documentation to shorten the learning curve.</li>
+          <li>OMP Operation Management Platform (System Analyst): Led legacy system replacement analysis for ST1 and XOMS; resolved SAP data model discrepancies caused by cross-strait regulations and sales models, delivering cross-system data flow and Data Mapping specifications for development and launch.</li>
+          <li>Training Management System (AI Agent Development): Delivered a full-stack system using Qoder, supporting course creation, online QR Code registration, and on-site QR check-in, while providing attendance and user behavior trajectory analytics to support operational decision-making.</li>
+        </ul>
+      </div>
+
+      <div class="job-item">
+        <div class="job-top">
+          <div class="job-company-role"><strong>Lion Travel</strong><span class="divider">|</span>Software Engineer</div>
+          <div class="job-date-loc">Jun 2023 - May 2024 | Taipei, Taiwan</div>
+        </div>
+        <div class="job-tech">Tech &amp; Databases: .NET Core, C#, MVC, Entity Framework, JavaScript, jQuery, Docker, KrakenD API Gateway, Redis, OAuth 2.0, OIDC, Azure DevOps, Cypress (E2E), Uptime-Kuma, Backstage / SQL Server</div>
+        <ul class="job-bullets">
+          <li>Single Sign-On Authentication System (Full-Stack Development): Developed an enterprise-grade B2B/B2C Single Sign-On (SSO) authentication and authorization system based on Duende IdentityServer, OAuth 2.0, and OIDC.</li>
+          <li>Developed travel ticketing APIs and an API Gateway monitoring management portal; authored Cypress E2E automated tests and executed automated builds and deployments using Azure DevOps.</li>
+        </ul>
+      </div>
+
+      <div class="job-item">
+        <div class="job-top">
+          <div class="job-company-role"><strong>TPIsoftware</strong><span class="divider">|</span>Software Engineer</div>
+          <div class="job-date-loc">Jul 2022 - Nov 2022 | Taipei, Taiwan</div>
+        </div>
+        <div class="job-tech">Tech &amp; Databases: ASP.NET, C#, MVC, Dapper, ADO.NET, Entity Framework, LINQ, JavaScript, jQuery, AJAX, Python (Crawler), Git, SourceTree / SQL Server</div>
+        <ul class="job-bullets">
+          <li>Standard Chartered Bank Insurance License Management System (Backend Development): Developed license management modules, customer policy submission APIs, and automated background email scheduling notifications, improving dispatch efficiency and reducing missed notification risks.</li>
+        </ul>
+      </div>
+
+      <div class="job-item">
+        <div class="job-top">
+          <div class="job-company-role"><strong>Chunghwa System Integration</strong><span class="divider">|</span>Software Engineer</div>
+          <div class="job-date-loc">Jan 2021 - Jun 2022 | Taipei, Taiwan</div>
+        </div>
+        <div class="job-tech">Tech &amp; Databases: ASP.NET, C#, MVC, Razor, JavaScript, jQuery, AJAX, HTML, CSS, Bootstrap, Docker, Git, SourceTree, Azure DevOps / SQL Server, MySQL</div>
+        <ul class="job-bullets">
+          <li>Built project MVC architectures, maintained databases, remediated vulnerability scan security issues, and implemented CI/CD automated deployments with Azure DevOps.</li>
+          <li>Key Project Deliverables: Chunghwa Telecom Online Customer Service System (repair inquiry, dispatch, and reporting permission back-office), Solar Green Energy Monitoring Platform (weather API integration for real-time power generation calculation), 5G Keelung Smart Harbor Drone Monitoring System (device management APIs and real-time coordinate tracking), and Taipei-New Taipei-Taoyuan Land Administration Information System (query APIs and Swagger documentation).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Bottom Two Columns: SKILLS & PERSONAL & EDUCATION -->
+    <div class="bottom-columns">
+      <section>
+        <h2 class="section-heading">SKILLS</h2>
+        <div class="skills-grid">
+          <div class="skill-label">BACKEND</div>
+          <div class="skill-items">ASP.NET (MVC / Core), C#, Web API, Entity Framework</div>
+
+          <div class="skill-label">FRONTEND</div>
+          <div class="skill-items">Razor, JavaScript, jQuery, HTML, CSS, AJAX</div>
+
+          <div class="skill-label">DATABASE</div>
+          <div class="skill-items">SQL Server, MySQL, Oracle</div>
+
+          <div class="skill-label">DEVOPS</div>
+          <div class="skill-items">Docker, Azure DevOps, Git (SourceTree), Cypress (E2E)</div>
+
+          <div class="skill-label">AI</div>
+          <div class="skill-items">Claude Code, Qoder</div>
+
+          <div class="skill-label">TOOLS</div>
+          <div class="skill-items">Visual Studio, VS Code, Uptime-Kuma, KrakenD, Backstage, draw.io</div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-heading">PERSONAL &amp; EDUCATION</h2>
+        <div class="edu-block">
+          <div class="edu-title">Wiedu TibaMe — AI Information Engineering Program</div>
+          <div class="edu-sub">Professional Information Engineering Training | 2020</div>
+        </div>
+        <div class="edu-block">
+          <div class="edu-title">Kainan University — Department of Banking and Finance</div>
+          <div class="edu-sub">Bachelor's Degree | 2010 - 2014</div>
+        </div>
+        <div class="personal-block">
+          <div class="personal-title">Personal Details &amp; Languages</div>
+          <div>Date of Birth: 1991/06/08</div>
+          <div>Languages: Mandarin Chinese (Native), English (Conversational, 2 years of Working Holiday experience in Australia)</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Bo-Heng Yu - Resume</span>
+      <span>Page 1 of 1</span>
+    </footer>
+  </div>
+</body>
+</html>
